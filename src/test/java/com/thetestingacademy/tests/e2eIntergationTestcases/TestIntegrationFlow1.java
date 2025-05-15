@@ -63,7 +63,7 @@ public class TestIntegrationFlow1 extends BaseTest {
 
     }
 
-    @Test(groups = "qa")
+    @Test(groups = "qa", priority = 3)
     @Owner("Siva")
     @Description("TC#1 Step-1, Verify that booking is Updated")
     public void testUpdateBooking(ITestContext iTestContext) {
@@ -84,7 +84,7 @@ public class TestIntegrationFlow1 extends BaseTest {
 
     }
 
-    @Test(groups = "qa")
+    @Test(groups = "qa", priority = 4)
     @Owner("Siva")
     @Description("TC#1 Step-1, Verify that booking is Deleted")
     public void testDeleteBooking(ITestContext iTestContext) {
@@ -98,8 +98,8 @@ public class TestIntegrationFlow1 extends BaseTest {
                 .log()
                 .all()
                 .delete();
-        Booking booking = payLoadManager.getResponseFromJSON(response.asString());
-        assertActions.verifySatusCode(response, 200);
+        validatableResponse = response.then().log().all();
+        validatableResponse.statusCode(201);
 
 
     }

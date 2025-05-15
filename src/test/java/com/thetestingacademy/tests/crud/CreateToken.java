@@ -23,10 +23,10 @@ public class CreateToken extends BaseTest {
         System.out.println(response.asString());
 
         //Extract
-        TokenResponse tokenResponse = payLoadManager.
-                gettokenResponse(response.asString());
+        String token = payLoadManager.gettokenResponse(response.asString());
+        System.out.println(token);
         //Verify
-        assertActions.verifyStringKeyNotNull(tokenResponse.getToken());
+        assertActions.verifyStringKeyNotNull(token);
 
     }
 }
